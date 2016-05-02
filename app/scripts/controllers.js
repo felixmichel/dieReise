@@ -2,11 +2,14 @@
 
 angular.module('dieReiseApp')
 
+  // FIXME: Array notation not needed here since we use ng-annotate grunt plugin
   .controller('dataFeedController', ['$scope', 'dataService', function($scope, dataService) {
+    // FIXME: Consider using controllerAs syntax (more future proof)
     $scope.registerMessage = 'Das ist leider schon weg.';
 
     $scope.showContent = false;
     $scope.message = 'Loading ...';
+    // FIXME: Consider using promise-notation
     $scope.events = dataService.getEvents().query(
       function (response) {
         $scope.events = response;
