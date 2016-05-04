@@ -4,6 +4,8 @@
  * Module dependencies.
  */
 
+// FIXME: This script is not needed. We start app.js directly
+
 var app = require('../app');
 var debug = require('debug')('rest-server:server');
 var http = require('http');

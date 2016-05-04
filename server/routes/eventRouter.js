@@ -1,10 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
 var Events = require('../models/events');
 
 var eventRouter = express.Router();
+// FIXME: Nove this configuration to app.js
 eventRouter.use(bodyParser.json());
 
 eventRouter.route('/')
@@ -16,11 +16,14 @@ eventRouter.route('/')
 })
 
 .post(function (req, res, next) {
+
+    // FIXME: Consider using promise-notation Events.create().then(...).catch(...). Better readable.
     Events.create(req.body, function (err, event) {
         if (err) throw err;
         console.log('Event created!');
         var id = event._id;
 
+        // FIXME: Use res.send() instead of res.writeHeader() and res.end()
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });
