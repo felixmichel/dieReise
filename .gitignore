@@ -4,5 +4,5 @@
 /.tmp
 /.sass-cache
 /bower_components
-/mongodb/data/journal
 .DS_Store
+npm-debug.log
