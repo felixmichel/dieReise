@@ -5,15 +5,15 @@ var Schema = mongoose.Schema;
 var registerSchema = new Schema({
     firstName:  {
         type: String,
-        unique: true
+        required: true
     },
     lastName:  {
         type: String,
-        unique: true
+        required: true
     },
     email:  {
         type: String,
-        unique: true
+        required: true
     },
 }, {
     timestamps: true
@@ -23,8 +23,7 @@ var registerSchema = new Schema({
 var eventSchema = new Schema({
     name: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     description: {
         type: String,
