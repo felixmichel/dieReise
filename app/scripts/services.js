@@ -6,7 +6,7 @@ angular.module('dieReiseApp')
   .constant('baseURL', 'http://46.101.199.218:3000/')
   //.constant('baseURL', 'http://localhost:3000/')
 
-  .service('dataService', ['$resource', 'baseURL', function ($resource, baseURL) {
+  .service('dataService', function ($resource, baseURL) {
 
     //Zugriff auf alle Events
 
@@ -14,4 +14,4 @@ angular.module('dieReiseApp')
       return $resource(baseURL + 'events/:_id', null, {'update': {method: 'PUT'}});
     };
 
-  }]);
+  });

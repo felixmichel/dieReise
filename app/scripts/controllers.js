@@ -2,8 +2,7 @@
 
 angular.module('dieReiseApp')
 
-  // FIXME: Array notation not needed here since we use ng-annotate grunt plugin
-  .controller('dataFeedController', ['$scope', 'dataService', function($scope, dataService) {
+  .controller('dataFeedController', function ($scope, dataService, $uibModal) {
     // FIXME: Consider using controllerAs syntax (more future proof)
     $scope.registerMessage = 'Das ist leider schon weg.';
 
@@ -20,38 +19,66 @@ angular.module('dieReiseApp')
       });
 
     $scope.event = {};
-    $scope.fillModal = function(eventId, eventAvailable) {
-      console.log(eventId);
-      console.log(eventAvailable);
-      if (eventAvailable === true) {
-      $scope.event = dataService.getEvents().get({_id: eventId});
-      }
-      else {
-        $scope.event = {name:'Schon weg', description:'Schon weg'};
-      }
-      console.log($scope.event);
+
+    // FIXME: Directly pass event object, thus no db query getEvents() is needed
+    // $scope.fillModal = function (eventId, eventAvailable) {
+    //   console.log(eventId);
+    //   console.log(eventAvailable);
+    //   // FIXME: use event.available...
+    //   if (eventAvailable === true) {
+    //     $scope.event = dataService.getEvents().get({_id: eventId});
+    //   }
+    //   else {
+    //     $scope.event = {name: 'Schon weg', description: 'Schon weg'};
+    //   }
+    //   console.log($scope.event);
+    // };
+
+
+    $scope.fillModal = function (event) {
+
+      var modalInstance = $uibModal.open({
+        templateUrl: 'modal.html',
+        controller: 'GiftController',
+        resolve: {
+          event: function () {
+            return event;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
     };
 
-  }])
+    $scope.toggleAnimation = function () {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
 
-  .controller('GiftController', ['$scope', 'dataService', function($scope, dataService) {
+  })
 
-    $scope.myGift = {firstName:'', lastName:'', email:'', date: ''};
+
+  .controller('GiftController', function ($scope, dataService) {
+
+    $scope.myGift = {firstName: '', lastName: '', email: '', date: ''};
     $scope.registerMessage = 'Vielen Dank für dein Geschenk!';
 
-    $scope.sendForm = function() {
+    $scope.sendForm = function () {
       $scope.myGift.date = new Date().toISOString();
       console.log($scope.myGift);
       $scope.event.registration.push($scope.myGift);
-      dataService.getEvents().update({_id:$scope.event._id},$scope.event);
+      dataService.getEvents().update({_id: $scope.event._id}, $scope.event);
       $scope.event.available = false;
 
       $scope.myGiftForm.$setPristine();
-      $scope.myGift = {firstName:'', lastName:'', email:'', date: ''};
+      $scope.myGift = {firstName: '', lastName: '', email: '', date: ''};
       console.log($scope.myGift);
 
     };
 
-    }])
+  })
 
 ;
