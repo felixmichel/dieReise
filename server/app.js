@@ -5,7 +5,8 @@ var bodyParser = require('body-parser');
 var eventRouter = require('./routes/eventRouter');
 
 // FIXME: Extract db stuff to module
-var url = 'mongodb://localhost:4321/dieReise';
+// FIXME: use environment config files db-url
+var url = 'mongodb://localhost:27017/dieReise';
 mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
