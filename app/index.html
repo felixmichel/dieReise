@@ -5,6 +5,7 @@
     <title>Reise nach Marokko</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -22,6 +23,8 @@
     <!-- Add your site or application content here -->
 
       <div id="covers" class="container" ng-controller="dataFeedController">
+        <h1 class="title">Reise nach Marokko</h1>
+        <p class="lead">Nur eine Sache pro Person</p>
         <div class="col-xs-12" ng-if="!showContent">
           <h3>{{message}}</h3>
         </div>
@@ -41,34 +44,30 @@
               </div>
               <div class="modal-body">
                 {{event.description}}<br /><br />
+                <a href="https://www.youtube.com/watch?v=i5j1wWY-qus" target="_blank">Sind Sie d'accord?</a>
+                <br /><br />
 
                 <form ng-controller="GiftController" ng-if="event.available === true" class="form-horizontal" name="myGiftForm" ng-submit="sendForm()" novalidate>
                   <div class="form-group" ng-class="{ 'has-error' : myGiftForm.firstname.$error.required && !myGiftForm.firstname.$pristine }">
-                    <label for="firstname" class="col-sm-2 control-label">Vorname</label>
-                    <div class="col-sm-10">
+                    <label for="firstname" class="col-sm-3 control-label">Vorname</label>
+                    <div class="col-sm-9">
                       <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Vorname?"
                              ng-model="myGift.firstName" required>
                       <span ng-show="myGiftForm.firstname.$error.required && !myGiftForm.firstname.$pristine" class="help-block">Bitte gib deinen Vornamen an.</span>
                     </div>
                   </div>
                   <div class="form-group" ng-class="{ 'has-error' : myGiftForm.lastname.$error.required && !myGiftForm.lastname.$pristine }">
-                    <label for="lastname" class="col-sm-2 control-label">Nachname</label>
-                    <div class="col-sm-10">
+                    <label for="lastname" class="col-sm-3 control-label">Nachname</label>
+                    <div class="col-sm-9">
                       <input type="text" class="form-control" id="lastname" name="lastname"  placeholder="Nachname?"
                              ng-model="myGift.lastName" required>
                       <span ng-show="myGiftForm.lastname.$error.required && !myGiftForm.lastname.$pristine" class="help-block">Bitte gib deinen Nachnamen an.</span>
 
                     </div>
                   </div>
-                  <div class="form-group" ng-class="{ 'has-error' : myGiftForm.emailid.$error.required && !myGiftForm.emailid.$pristine }">
-                    <label for="emailid" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Email?"
-                             ng-model="myGift.email" required>
-                      <span ng-show="myGiftForm.emailid.$error.required && !myGiftForm.emailid.$pristine" class="help-block">Bitte gib deine Email-Adresse an.</span>
-                    </div>
+                  <div class="submit-box">
+                  <button type="submit" class="btn btn-primary" ng-disabled="myGiftForm.$invalid">Ich bin d'accord</button>
                   </div>
-                  <button type="submit" class="btn btn-primary" ng-disabled="myGiftForm.$invalid">Schenken</button>
 
                 </form>
 
