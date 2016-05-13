@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('dieReiseApp',['ngResource']);
+angular.module('dieReiseApp',['ngResource', 'ngAnimate', 'ui.bootstrap']);

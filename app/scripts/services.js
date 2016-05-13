@@ -3,8 +3,8 @@
 angular.module('dieReiseApp')
 
   // FIXME: Consider using ng-contant grunt plugin for env variables that are different in production
-  .constant('baseURL', 'http://46.101.199.218:3000/')
-  //.constant('baseURL', 'http://localhost:3000/')
+  //.constant('baseURL', 'http://46.101.199.218:3000/')
+  .constant('baseURL', 'http://localhost:3000/')
 
   .service('dataService', function ($resource, baseURL) {
 

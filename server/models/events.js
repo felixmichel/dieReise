@@ -10,11 +10,7 @@ var registerSchema = new Schema({
     lastName:  {
         type: String,
         required: true
-    },
-    email:  {
-        type: String,
-        required: true
-    },
+    }
 }, {
     timestamps: true
 });
@@ -32,6 +28,9 @@ var eventSchema = new Schema({
      image: {
         type: String,
         required: true
+    },
+    gif: {
+    type: String
     },
     available: {
         type: Boolean,

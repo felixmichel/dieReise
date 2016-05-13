@@ -29,19 +29,15 @@
           <h3>{{message}}</h3>
         </div>
         <div class="col-xs-12" ng-if="showContent">
-
         <a ng-repeat="event in events" ng-class="{true:'available', false:'unavailable'}[event.available]" ng-click="fillModal(event)"><img ng-src={{event.image}}></a>
-
-
-
-        <!-- FIXME: Consider using angular-ui bootstrap modal (https://angular-ui.github.io/bootstrap/). This way we can get rid of jquery.js and bootstrap.js -->
-
+        </div>
+      </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
