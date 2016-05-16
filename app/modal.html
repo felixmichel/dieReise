@@ -7,7 +7,7 @@
     <div class="modal-body">
       <div>
       {{event.description}}<br /><br /></div>
-      <img ng-src={{event.gif}}>
+      <img ng-src={{event.gif}} style="max-width: 100%;">
       <br /><br />
 
       <form ng-if="event.available === true" class="form-horizontal" name="myGiftForm" ng-submit="sendForm()" novalidate>

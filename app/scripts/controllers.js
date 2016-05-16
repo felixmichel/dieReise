@@ -31,30 +31,6 @@ angular.module('dieReiseApp')
             }
           }
         });
-
-        modalInstance.result.then(function () {
-
-          // close-button
-          $scope.events = dataService.getEvents().query(
-            function (response) {
-              $scope.events = response;
-              $scope.showContent = true;
-            },
-            function (response) {
-              $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
-            });
-        }, // dismissed
-
-          function () {
-          $scope.events = dataService.getEvents().query(
-            function (response) {
-              $scope.events = response;
-              $scope.showContent = true;
-            },
-            function (response) {
-              $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
-            });
-        });
       };
 
   })
@@ -73,7 +49,6 @@ angular.module('dieReiseApp')
     };
 
     $scope.myGift = {firstName: '', lastName: '', email: '', date: ''};
-    $scope.registerMessage = 'Vielen Dank für dein Geschenk!';
 
     $scope.sendForm = function () {
       $scope.myGift.date = new Date().toISOString();
