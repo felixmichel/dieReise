@@ -26,20 +26,26 @@
 
       <div id="covers" class="container" ng-controller="dataFeedController">
         <h1 class="title">Reise nach Marokko</h1>
-        <p class="lead">Nur eine Sache pro Person</p>
+        <p class="lead">Wenn du unsere Reise versüssen möchtest, findest du hier ein Geschenk.
+          Durch einen Klick auf die Bilder, erfährst du mehr.
+          Bei den Geschenken bleibt auch immer Raum für Kreativität und eigene Ideen. Wie viel du für unser Geschenk ausgeben willst, überlassen wir dir.
+          Viel Spass beim Stöbern und vielen Dank! Wir freuen uns schon auf dein Geschenk.
+        </p>
         <div class="col-xs-12" ng-if="!showContent">
           <h3>{{message}}</h3>
         </div>
         <div class="col-xs-12" ng-if="showContent">
-        <a ng-repeat="event in events" ng-class="{true:'available', false:'unavailable'}[event.available]" ng-click="fillModal(event)"><img ng-src={{event.image}}></a>
+        <a ng-repeat="event in events | orderBy: 'order'" ng-class="{true:'available', false:'unavailable'}[event.available]" ng-click="fillModal(event)"><img ng-src={{event.image}}></a>
         </div>
       </div>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

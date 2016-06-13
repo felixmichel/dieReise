@@ -19,10 +19,10 @@ var app = express();
 
 // FIXME: Restrict to frontend server origins to be more secure
 // FIXME: use environment config files for origins (NODE_ENV=production node app.js)
-// app.use(cors({
-//   origin: 'http://tradukt.ch'
-// }));
-app.use(cors());
+app.use(cors({
+  origin: 'http://tradukt.ch'
+ }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

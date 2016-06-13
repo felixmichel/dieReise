@@ -7,10 +7,15 @@
     <div class="modal-body">
       <div>
       {{event.description}}<br /><br /></div>
-      <img ng-src={{event.gif}} style="max-width: 100%;">
-      <br /><br />
+      <img ng-if="event.gif" ng-src={{event.gif}} style="max-width: 100%;">
+      <div ng-if="event.video" class="embed-responsive embed-responsive-16by9">
+        <youtube-video class="embed-responsive-item" video-id="event.video"></youtube-video>
+      </div>
+      <br />
+      {{eventMessage}}
 
       <form ng-if="event.available === true" class="form-horizontal" name="myGiftForm" ng-submit="sendForm()" novalidate>
+        <p>Wenn du uns das schenken willst, trage dich unten ein.<br /><br /></p>
         <div class="form-group" ng-class="{ 'has-error' : myGiftForm.firstname.$error.required && !myGiftForm.firstname.$pristine }">
           <label for="firstname" class="col-sm-3 control-label">Vorname</label>
           <div class="col-sm-9">
@@ -29,12 +34,12 @@
           </div>
         </div>
         <div class="submit-box">
-          <button type="submit" class="btn btn-primary" ng-disabled="myGiftForm.$invalid">Abschicken</button>
+          <button type="submit" class="btn btn-primary" ng-disabled="myGiftForm.$invalid">Schenken</button>
         </div>
 
       </form>
 
-      <div ng-if="event.available === false">Sehr flott von dir. Vielen Dank für dein Geschenk!</div>
+      <div>{{successMessage}}</div>
 
     </div>
 

@@ -11,8 +11,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 .unavailable {
-  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-  filter: grayscale(100%);
+  -webkit-filter: sepia(1);
+  filter: sepia(1);
 }
 
 body {
